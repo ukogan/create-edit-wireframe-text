@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editable Wireframes - Interactive UI Text Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .problem-solution {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .problem-solution h2 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .problem-solution p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+        }
+        
+        .wireframes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .wireframe-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .wireframe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .wireframe-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .wireframe-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .wireframe-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .wireframe-features {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .wireframe-features li {
+            padding: 5px 0;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .wireframe-features li::before {
+            content: "✓ ";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #2980b9;
+        }
+        
+        .how-it-works {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .how-it-works h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .step {
+            text-align: center;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .step h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .step p {
+            color: #666;
+        }
+        
+        footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Editable Wireframes</h1>
+            <p>Edit UI text in context, see changes instantly, and download your customized wireframes. Perfect for rapid prototyping and content iteration.</p>
+        </div>
+        
+        <div class="problem-solution">
+            <h2>🎯 The Problem</h2>
+            <p>When AI generates mockups, the text content often needs refinement. But editing text in a separate file means you can't see how it fits in the actual UI - will the button text overflow? Does the error message make sense in context?</p>
+        </div>
+        
+        <div class="problem-solution">
+            <h2>💡 The Solution</h2>
+            <p>Interactive wireframes with real-time text editing. See your changes instantly in the actual UI context, then download both the updated JSON configuration and the modified HTML wireframe.</p>
+        </div>
+        
+        <div class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Select a Wireframe</h3>
+                    <p>Choose from our demo wireframes below to see the concept in action</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Edit in Real-Time</h3>
+                    <p>Use the text editor panel to modify any UI text and see changes instantly</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Download Results</h3>
+                    <p>Export your customized JSON config and modified HTML wireframe</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wireframes-grid">
+            <a href="main-window-wireframe.html" class="wireframe-card">
+                <div class="wireframe-icon">📱</div>
+                <h3>Main Window</h3>
+                <p>Primary application interface with availability display and user controls</p>
+                <ul class="wireframe-features">
+                    <li>User status and connection info</li>
+                    <li>Date range selector</li>
+                    <li>Action buttons (Find, Copy, Save)</li>
+                    <li>Success/error messaging</li>
+                </ul>
+                <div class="cta-button">Try Main Window Editor</div>
+            </a>
+            
+            <a href="onboarding-wireframe.html" class="wireframe-card">
+                <div class="wireframe-icon">🚀</div>
+                <h3>Onboarding Flow</h3>
+                <p>User setup and configuration screens for first-time app setup</p>
+                <ul class="wireframe-features">
+                    <li>Welcome messaging</li>
+                    <li>Setup instructions</li>
+                    <li>Progress indicators</li>
+                    <li>Call-to-action buttons</li>
+                </ul>
+                <div class="cta-button">Try Onboarding Editor</div>
+            </a>
+            
+            <a href="settings-wireframe.html" class="wireframe-card">
+                <div class="wireframe-icon">⚙️</div>
+                <h3>Settings Panel</h3>
+                <p>Configuration interface with preferences and account management</p>
+                <ul class="wireframe-features">
+                    <li>Setting descriptions</li>
+                    <li>Help tooltips</li>
+                    <li>Form labels and placeholders</li>
+                    <li>Validation messaging</li>
+                </ul>
+                <div class="cta-button">Try Settings Editor</div>
+            </a>
+        </div>
+        
+        <footer>
+            <p>🛠️ Built to demonstrate contextual UI text editing • Open source concept for rapid prototyping</p>
+        </footer>
+    </div>
+</body>
+</html>
